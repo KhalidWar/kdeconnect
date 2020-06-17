@@ -12,7 +12,7 @@ class AboutAppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // todo route to project's public github repo
-    var url = '';
+    var url = 'https://github.com/KhalidWar/kdeconnect-sample';
     return GestureDetector(
       onTap: () {
         showAboutDialog(
