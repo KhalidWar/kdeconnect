@@ -1,13 +1,24 @@
 # KDE Connect - Sample
 
-A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) with more modern UI. This app is built using [Flutter](https://flutter.dev) framework and it's just UI with no backend.
+A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) with more modern UI. This app is built using [Flutter](https://flutter.dev) framework.
 
 ## Screenshots
-<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/media_control.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run-command_search.jpg" width="200">  
+<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/media_control.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/media_control_volume.jpg" width="150">  <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run-command_search.jpg" width="150">  
 
-<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files_night.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command_night.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/main_drawer_night.jpg" width="200"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/plugin_settings_night.jpg" width="200">
+<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/main_drawer_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/plugin_settings_night.jpg" width="150">
 
+## Features
+- Modern user interface with better user experience
+- Adaptive Light and Dark themes
+- Simplified settings page
+- View list of recently sent files
+- Consolidated all commands under single page
+- Sort "Run Command" by A-Z or Z-A or by color
+- Red commands (restart, shutdown, suspend...etc) require confirmation before executing
+- ...and much more
 
+## Upcoming Features
+- "Unlock Screen" command requires mobile device authentication (PIN or biometric)
 
 ## Packages used
 - [FontAwesome](https://pub.dev/packages/font_awesome_flutter)
@@ -17,7 +28,6 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 Install attacked [APK file](https://github.com/KhalidWar/kdeconnect-sample/releases) onto your android device.
 
 ## Getting Started
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
