@@ -25,13 +25,14 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 - [Shared Preferences](https://pub.dev/packages/shared_preferences)
 - [FontAwesome](https://pub.dev/packages/font_awesome_flutter)
 - [URL Launcher](https://pub.dev/packages/url_launcher)
-- [Shared Preferences](https://pub.dev/packages/shared_preferences)
 
 
-## Installing
-Install attacked [APK file](https://github.com/KhalidWar/kdeconnect-sample/releases) onto your android device.
+## Installation
 
-## Getting Started
+By either sideloading attacked [APK file](https://github.com/KhalidWar/kdeconnect-sample/releases) onto your android device or building project from source following steps below.
+
+
+### Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
