@@ -31,7 +31,7 @@ class _PluginSettingsScreenState extends State<PluginSettingsScreen> {
 
             return ListTile(
                 leading: Checkbox(
-                  activeColor: kPrimaryColor,
+                  activeColor: Theme.of(context).accentColor,
                   value: pluginSettingsList[index].isCheckboxChecked,
                   onChanged: (bool value) {
                     setState(() {

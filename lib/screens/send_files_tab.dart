@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/components/send_files_list.dart';
 import 'package:sample/constants.dart';
-
-import 'home_screen.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class SendFilesTab extends StatefulWidget {
   static const String id = kSendFilesIDText;
@@ -26,6 +25,8 @@ class _SendFilesTabState extends State<SendFilesTab> {
                         'This app is a demo and doesn\'t need to access device storage but this is how you select a file to send to connected device.'),
                     actions: <Widget>[
                       FlatButton(
+                        textColor:
+                            isLightTheme(context) ? Colors.black : Colors.white,
                         child: Text('Okay'),
                         onPressed: () {
                           Navigator.pop(context);
@@ -37,7 +38,7 @@ class _SendFilesTabState extends State<SendFilesTab> {
           },
         ),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
           child: Column(
             children: <Widget>[
               Row(
@@ -51,11 +52,8 @@ class _SendFilesTabState extends State<SendFilesTab> {
                     ),
                   ),
                   OutlineButton(
-                    splashColor: kPrimaryColor,
-                    highlightedBorderColor: kPrimaryColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    borderSide: BorderSide(color: kPrimaryColor, width: 2),
+                    borderSide:
+                        BorderSide(color: Theme.of(context).accentColor),
                     child: Text('clear all'),
                     onPressed: () {},
                   ),
@@ -89,7 +87,6 @@ class _SendFilesTabState extends State<SendFilesTab> {
                                     filesList[index].name,
                                     style: TextStyle(
                                       fontSize: 16,
-//                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                   Row(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/screens/home_screen.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class DevicesListTile extends StatelessWidget {
   DevicesListTile({
@@ -20,7 +20,8 @@ class DevicesListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
     return Container(
-      color: isConnected ? kPrimaryColorLight : null,
+      //todo accentColor instead of primaryColorLight
+      color: isConnected ? Theme.of(context).accentColor : null,
       child: ListTile(
         dense: true,
         contentPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),

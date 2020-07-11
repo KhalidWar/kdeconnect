@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class SlideshowRemoteTab extends StatefulWidget {
   static const String id = kSlideshowRemoteIDText;
@@ -18,7 +19,7 @@ class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(3.0),
               child: Text(kSlideshowInstructionText),
             ),
             Expanded(
@@ -28,9 +29,11 @@ class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
                 children: <Widget>[
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(3.0),
                       child: FlatButton(
-                        color: kPrimaryColor,
+                        color: isLightTheme(context)
+                            ? Theme.of(context).primaryColorDark
+                            : Theme.of(context).primaryColorLight,
                         child: Icon(Icons.skip_previous),
                         onPressed: () {},
                       ),
@@ -38,9 +41,11 @@ class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(3.0),
                       child: FlatButton(
-                        color: kPrimaryColor,
+                        color: isLightTheme(context)
+                            ? Theme.of(context).primaryColorDark
+                            : Theme.of(context).primaryColorLight,
                         child: Icon(Icons.skip_next),
                         onPressed: () {},
                       ),
@@ -52,9 +57,11 @@ class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(3.0),
                 child: FlatButton(
-                  color: kPrimaryColor,
+                  color: isLightTheme(context)
+                      ? Theme.of(context).primaryColorDark
+                      : Theme.of(context).primaryColorLight,
                   child: Text('Pointer'),
                   onPressed: () {},
                 ),

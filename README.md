@@ -23,6 +23,8 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 ## Packages used
 - [FontAwesome](https://pub.dev/packages/font_awesome_flutter)
 - [URL Launcher](https://pub.dev/packages/url_launcher)
+- [Provider](https://pub.dev/packages/provider)
+
 
 ## Installing
 Install attacked [APK file](https://github.com/KhalidWar/kdeconnect-sample/releases) onto your android device.

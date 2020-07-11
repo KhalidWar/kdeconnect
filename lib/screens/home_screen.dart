@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sample/components/main_drawer.dart';
 import 'package:sample/components/tabs_list.dart';
 import 'package:sample/constants.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
-}
-
-bool isLightTheme(context) {
-  var isLightTheme = Theme.of(context).brightness == Brightness.light;
-  return isLightTheme;
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -29,22 +25,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: tabsList[_selectedIndex].widget,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
-        child: AppBar(title: Text(tabsList[_selectedIndex].title)),
+        preferredSize: Size.fromHeight(45),
+        child: AppBar(
+          backgroundColor: isLightTheme(context)
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).primaryColorLight,
+          title: Text(tabsList[_selectedIndex].title),
+        ),
       ),
       drawer: Drawer(child: MainDrawer()),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: isLightTheme(context)
-            ? Colors.white
-            : Theme.of(context).accentColor,
+        backgroundColor: isLightTheme(context)
+            ? Theme.of(context).primaryColor
+            : Theme.of(context).primaryColorLight,
+        selectedItemColor: Theme.of(context).accentColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedIconTheme: IconThemeData(size: 30),
-        unselectedIconTheme: IconThemeData(size: 25),
+        selectedIconTheme: IconThemeData(size: 25),
+        unselectedIconTheme: IconThemeData(size: 23),
         items: [
           BottomNavigationBarItem(
             icon: kSendFilesIcon,

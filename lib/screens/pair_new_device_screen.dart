@@ -3,8 +3,7 @@ import 'package:sample/components/connected_devices_list.dart';
 import 'package:sample/components/device_simple_dialog.dart';
 import 'package:sample/components/devices_list_tile.dart';
 import 'package:sample/constants.dart';
-
-import 'home_screen.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class PairNewDevice extends StatefulWidget {
   static const String id = 'paid_new_device_screen';

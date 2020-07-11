@@ -164,7 +164,7 @@ class _MediaControlTabState extends State<MediaControlTab> {
                     value: sliderValue,
                     min: sliderMinValue,
                     max: sliderMaxValue,
-                    activeColor: kPrimaryColor,
+                    activeColor: Theme.of(context).accentColor,
                     inactiveColor: Colors.grey,
                     onChanged: (barValue) {
                       setState(() {
@@ -177,6 +177,7 @@ class _MediaControlTabState extends State<MediaControlTab> {
               ],
             ),
             Divider(thickness: 1),
+            // todo re-design multimedia controls
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
@@ -205,7 +206,7 @@ class _MediaControlTabState extends State<MediaControlTab> {
                         child: Icon(
                           isPlaying ? Icons.pause : Icons.play_arrow,
                           size: 80,
-                          color: kPrimaryColor,
+                          color: Theme.of(context).accentColor,
                         ),
                         onTap: () {
                           playOrPause();
@@ -231,7 +232,8 @@ class _MediaControlTabState extends State<MediaControlTab> {
                   child: IconButton(
                     icon: isSoundPlaying
                         ? Icon(Icons.volume_up)
-                        : Icon(Icons.volume_off, color: kPrimaryColor),
+                        : Icon(Icons.volume_off,
+                            color: Theme.of(context).accentColor),
                     onPressed: () {
                       showModalBottomSheet(
                         shape: RoundedRectangleBorder(
@@ -271,8 +273,11 @@ class _MediaControlTabState extends State<MediaControlTab> {
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                   ),
                   IconButton(
-                    icon: Icon(Icons.volume_off,
-                        color: isSoundPlaying ? null : kPrimaryColor),
+                    icon: Icon(
+                      Icons.volume_off,
+                      color:
+                          isSoundPlaying ? null : Theme.of(context).accentColor,
+                    ),
                     onPressed: () {
                       setModalState(() {
                         soundOrMute();
@@ -347,7 +352,7 @@ class ReusableVolumeControl extends StatelessWidget {
             value: value,
             min: min,
             max: max,
-            activeColor: kPrimaryColor,
+            activeColor: Theme.of(context).accentColor,
             onChanged: function,
           ),
         ),

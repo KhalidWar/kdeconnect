@@ -22,7 +22,9 @@ class DrawerItemsListTile extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         child: Container(
-          color: isConnected ? kPrimaryColorLight : null,
+          //todo accentColor instead of primaryColorLight
+
+          color: isConnected ? Theme.of(context).accentColor : null,
           height: 40,
           padding: EdgeInsets.only(left: 15),
           child: Row(

@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/components/run_command_list.dart';
 import 'package:sample/constants.dart';
+import 'package:sample/services/theme_manager.dart';
 
 enum SortBy { AZ, ZA, Color }
 
@@ -36,65 +38,93 @@ class _RunCommandTabState extends State<RunCommandTab> {
 
   Widget buildTextField() {
     if (showTextField == true) {
-      return TextField(
-        autofocus: true,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(10),
-          border: OutlineInputBorder(),
-          prefixIcon: Icon(Icons.search),
-        ),
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            textFieldInput = value;
-          }
-        },
+      return Row(
+        children: <Widget>[
+          Flexible(
+            child: TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          style: BorderStyle.solid,
+                          color: Theme.of(context).accentColor),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  prefixIcon: Icon(Icons.search,
+                      color:
+                          isLightTheme(context) ? Colors.black : Colors.white)),
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  textFieldInput = value;
+                }
+              },
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.14,
+            height: 45,
+            child: OutlineButton(
+              highlightedBorderColor: Theme.of(context).accentColor,
+              shape: CircleBorder(),
+              borderSide: BorderSide(
+                  style: BorderStyle.solid,
+                  color: Theme.of(context).accentColor),
+              child: Icon(Icons.add),
+              onPressed: () {},
+            ),
+          ),
+        ],
       );
     } else {
-      return Padding(
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Icon(Icons.sort),
-                SizedBox(width: 10),
-                Text('Sort by:', style: TextStyle(fontSize: 15)),
-              ],
-            ),
-            Spacer(),
-            Row(
-              children: <Widget>[
-                Radio(
-                  value: SortBy.AZ,
-                  groupValue: _sortBy,
-                  activeColor: kPrimaryColor,
-                  onChanged: (value) {
-                    setState(() {
-                      _sortBy = value;
-                    });
-                  },
-                ),
-                Text('AZ'),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Radio(
-                  value: SortBy.Color,
-                  groupValue: _sortBy,
-                  activeColor: kPrimaryColor,
-                  onChanged: (value) {
-                    setState(() {
-                      _sortBy = value;
-                    });
-                  },
-                ),
-                Text('Color'),
-              ],
-            ),
-          ],
+      return Container(
+        // todo animate the switching
+//          transform: ,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Theme.of(context).accentColor,
+            style: BorderStyle.solid,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 11),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Icon(Icons.sort),
+                  SizedBox(width: 10),
+                  Text('Sort by:', style: TextStyle(fontSize: 15)),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Radio(
+                    value: SortBy.AZ,
+                    groupValue: _sortBy,
+                    onChanged: (value) {
+                      setState(() {
+                        _sortBy = value;
+                      });
+                    },
+                  ),
+                  Text('AZ'),
+                  Radio(
+                    value: SortBy.Color,
+                    groupValue: _sortBy,
+                    onChanged: (value) {
+                      setState(() {
+                        _sortBy = value;
+                      });
+                    },
+                  ),
+                  Text('Color'),
+                ],
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -114,7 +144,7 @@ class _RunCommandTabState extends State<RunCommandTab> {
         },
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(10, 8, 10, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -186,16 +216,22 @@ class RedCommandsConfirmation extends StatelessWidget {
       ),
       actions: <Widget>[
         FlatButton(
-          child: Text('No', style: TextStyle(fontSize: 20)),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        FlatButton(
-          child: Text('Yes', style: TextStyle(fontSize: 20)),
+          child: Text('Yes',
+              style: TextStyle(
+                  color: isLightTheme(context) ? Colors.black : Colors.white,
+                  fontSize: 20)),
           onPressed: () {
             Navigator.pop(context);
             runCommandsList[index].function();
+          },
+        ),
+        FlatButton(
+          child: Text('No',
+              style: TextStyle(
+                  color: isLightTheme(context) ? Colors.black : Colors.white,
+                  fontSize: 20)),
+          onPressed: () {
+            Navigator.pop(context);
           },
         ),
       ],

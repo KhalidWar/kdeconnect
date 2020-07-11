@@ -10,6 +10,7 @@ class _DeviceSimpleDialogState extends State<DeviceSimpleDialog> {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
+      //todo try without title
       title: Center(child: Text('What to do?')),
       children: <Widget>[
         SimpleDialogOption(
@@ -58,8 +59,8 @@ class SimpleDialogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: kPrimaryColor,
-      highlightColor: kPrimaryColor,
+      splashColor: Theme.of(context).accentColor,
+      highlightColor: Theme.of(context).accentColor,
       child: Column(
         children: <Widget>[
           icon,

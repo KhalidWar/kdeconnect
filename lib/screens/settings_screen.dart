@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sample/constants.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
 import 'package:sample/screens/trusted_networks_screen.dart';
-
-import 'home_screen.dart';
+import 'package:sample/services/theme_manager.dart';
 
 String deviceName = 'Note 8';
-
-enum Themes { auto, light, dark }
 
 class SettingsScreen extends StatefulWidget {
   static const String id = 'settings_screen';
@@ -20,7 +18,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   String textFieldInput;
 
   Widget deviceNameChanger() {
-    print('Method Accessed!');
     return Column(
       children: <Widget>[
         TextField(
@@ -34,20 +31,65 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Themes _themes = Themes.auto;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(kSettingsText),
-      ),
+      appBar: AppBar(title: Text(kSettingsText)),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Dark Theme',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Consumer<ThemeManager>(
+                    builder: (context, themeManager, child) => Switch(
+                      activeColor: Theme.of(context).accentColor,
+                      value: themeManager.isDark,
+                      onChanged: (value) {
+                        setState(() {
+                          themeManager.toggleTheme();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 25),
+              Column(
+                children: <Widget>[
+                  //todo finish adding accent color customization
+                  ReusableInkWellSettings(
+                    title: 'Accent Color',
+                    subtitle: 'Select an accent color',
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        height: 20,
+                        color: Colors.orange,
+                      ),
+                      Container(
+                        height: 20,
+                        color: Colors.orange,
+                      ),
+                      Container(
+                        height: 20,
+                        color: Colors.orange,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               ReusableInkWellSettings(
                 title: 'Device Name',
                 subtitle: deviceName,
@@ -60,58 +102,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Theme',
-                    style: kSettingsDeviceNameTextStyle,
-                  ),
-                  ListTile(
-                    leading: Text('Follow System'),
-                    dense: true,
-                    trailing: Radio(
-                      activeColor: kPrimaryColor,
-                      groupValue: _themes,
-                      value: Themes.auto,
-                      onChanged: (Themes value) {
-                        setState(() {
-                          _themes = value;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text('Eternal Light'),
-                    dense: true,
-                    trailing: Radio(
-                      activeColor: kPrimaryColor,
-                      groupValue: _themes,
-                      value: Themes.light,
-                      onChanged: (Themes value) {
-                        setState(() {
-                          _themes = value;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text('Eternal Night'),
-                    dense: true,
-                    trailing: Radio(
-                      activeColor: kPrimaryColor,
-                      groupValue: _themes,
-                      value: Themes.dark,
-                      onChanged: (Themes value) {
-                        setState(() {
-                          _themes = value;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
               ReusableInkWellSettings(
                 title: 'Persistent Notification',
                 subtitle: 'Tap to enable/disable in Notification Settings',
@@ -168,23 +158,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
       actions: <Widget>[
         FlatButton(
           child: Text(
-            'Cancel',
-            style: TextStyle(color: kPrimaryColor),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        FlatButton(
-          child: Text(
             'Rename',
-            style: TextStyle(color: kPrimaryColor),
+            style: TextStyle(color: Theme.of(context).accentColor),
           ),
           onPressed: () {
             setState(() {
               deviceName = textFieldInput;
               Navigator.of(context).pop();
             });
+          },
+        ),
+        FlatButton(
+          child: Text(
+            'Cancel',
+            style: TextStyle(color: Theme.of(context).accentColor),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
           },
         ),
       ],

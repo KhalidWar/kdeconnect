@@ -4,15 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 const kAppTitle = 'KDE Connect Sample';
 const kAppVersionText = 'Version: ';
 const kAppVersion = '1.0.0';
-//const kAppLegalese =
-
-const kPrimaryColor = Color(0xFFF67400);
-const kPrimaryColorDark = Color(0xFFbc4500);
-const kPrimaryColorLight = Color(0xFFffa541);
-
-const kDarkPrimaryColor = Color(0xFF000000);
-const kDarkPrimaryColorDark = Color(0xFF000000);
-const kDarkPrimaryColorLight = Color(0xFF494949);
 
 const kAppBarStatusIcon = Icon(Icons.brightness_3, size: 30);
 

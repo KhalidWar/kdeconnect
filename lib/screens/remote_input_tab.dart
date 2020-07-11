@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-
-import 'home_screen.dart';
+import 'package:sample/services/theme_manager.dart';
 
 class RemoteInputTab extends StatefulWidget {
   static const String id = kRemoteInputIDText;
@@ -14,13 +13,20 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
   bool showTextField = false;
   Widget buildTextField() {
     if (showTextField == true) {
-      return TextField(
-        autofocus: true,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(10),
-          border: OutlineInputBorder(),
-          hintText: 'Remote Device Input',
-          prefixIcon: Icon(Icons.keyboard),
+      return Padding(
+        padding: EdgeInsets.only(bottom: 8),
+        child: TextField(
+          autofocus: true,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      style: BorderStyle.solid,
+                      color: Theme.of(context).accentColor),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              hintText: 'Remote Device Input',
+              prefixIcon: Icon(Icons.keyboard,
+                  color: isLightTheme(context) ? Colors.black : Colors.white)),
         ),
       );
     } else {
@@ -41,14 +47,13 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: showTextField ? kFABKeyboardDownIcon : kFABKeyboardUpIcon,
-        onPressed: () {
-          setState(() {
-            // todo keyboard "done" and physical back buttons should trigger textFieldSwitcher()
-            textFieldSwitcher();
-          });
-        },
-      ),
+          child: showTextField ? kFABKeyboardDownIcon : kFABKeyboardUpIcon,
+          onPressed: () {
+            setState(() {
+              // todo keyboard "done" and physical back buttons should trigger textFieldSwitcher()
+              textFieldSwitcher();
+            });
+          }),
       body: Padding(
         padding: EdgeInsets.all(8),
         child: Column(
@@ -56,10 +61,9 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
             buildTextField(),
             Expanded(
               child: FlatButton(
-                splashColor: kPrimaryColor,
-                onPressed: () {
-                  print('GESTURE TOUCHED!');
-                },
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () {},
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,
