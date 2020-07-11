@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sample/components/main_drawer.dart';
 import 'package:sample/components/tabs_list.dart';
-import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -48,23 +48,23 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedIconTheme: IconThemeData(size: 23),
         items: [
           BottomNavigationBarItem(
-            icon: kSendFilesIcon,
+            icon: Icon(Icons.insert_drive_file),
             title: Text(tabsList[_selectedIndex].title),
           ),
           BottomNavigationBarItem(
-            icon: kSlideshowRemoteIcon,
+            icon: Icon(Icons.settings_remote),
             title: Text(tabsList[_selectedIndex].title),
           ),
           BottomNavigationBarItem(
-            icon: kMediaControlIcon,
+            icon: Icon(Icons.play_circle_outline),
             title: Text(tabsList[_selectedIndex].title),
           ),
           BottomNavigationBarItem(
-            icon: kRemoteInputIcon,
+            icon: Icon(FontAwesomeIcons.mousePointer),
             title: Text(tabsList[_selectedIndex].title),
           ),
           BottomNavigationBarItem(
-            icon: kRunCommandIcon,
+            icon: Icon(FontAwesomeIcons.terminal),
             title: Text(tabsList[_selectedIndex].title),
           ),
         ],

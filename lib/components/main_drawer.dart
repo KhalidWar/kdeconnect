@@ -6,10 +6,10 @@ import 'package:sample/components/device_simple_dialog.dart';
 import 'package:sample/components/devices_list_tile.dart';
 import 'package:sample/components/drawer_items_list_tile.dart';
 import 'package:sample/constants.dart';
+import 'package:sample/providers/theme_manager.dart';
 import 'package:sample/screens/pair_new_device_screen.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
 import 'package:sample/screens/settings_screen.dart';
-import 'package:sample/services/theme_manager.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 ],
               ),
             ),
-            DrawerCategory(label: kCategoryDevicesText),
+            DrawerCategory(label: 'Devices'),
             CustomDivider(),
             // todo show connected device info like neofetch
             ListView.builder(
@@ -63,8 +63,8 @@ class _MainDrawerState extends State<MainDrawer> {
             ),
 
             DevicesListTile(
-              label: kPairNewDeviceText,
-              icon: kPairNewDeviceIcon,
+              label: 'Pair New Device',
+              icon: Icons.add_circle_outline,
               isConnected: false,
               onPressed: () {
                 Navigator.pushNamed(context, PairNewDevice.id);
@@ -72,19 +72,19 @@ class _MainDrawerState extends State<MainDrawer> {
             ),
 
             SizedBox(height: 10),
-            DrawerCategory(label: kCategorySettingsText),
+            DrawerCategory(label: 'Settings'),
             CustomDivider(),
             DrawerItemsListTile(
-              label: kSettingsText,
-              icon: kSettingsIcon,
+              label: 'Settings',
+              icon: Icons.settings,
               isConnected: false,
               onPressed: () {
                 Navigator.pushNamed(context, SettingsScreen.id);
               },
             ),
             DrawerItemsListTile(
-              label: kPluginSettingsText,
-              icon: kPluginSettingsIcon,
+              label: 'Plugin Settings',
+              icon: Icons.tune,
               isConnected: false,
               onPressed: () {
                 Navigator.pushNamed(context, PluginSettingsScreen.id);
@@ -127,9 +127,10 @@ class DrawerCategory extends StatelessWidget {
       padding: EdgeInsets.only(top: 20),
       child: Text(
         label,
-        style: kDrawerCategoryTextStyle.copyWith(
-          color: isLightTheme(context) ? Colors.black54 : Colors.white54,
-        ),
+        style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20.0,
+            color: isLightTheme(context) ? Colors.black54 : Colors.white54),
       ),
     );
   }

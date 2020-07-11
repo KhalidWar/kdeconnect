@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sample/providers/theme_manager.dart';
 import 'package:sample/screens/home_screen.dart';
 import 'package:sample/screens/pair_new_device_screen.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
 import 'package:sample/screens/trusted_networks_screen.dart';
-import 'package:sample/services/theme_manager.dart';
 
 import 'constants.dart';
 import 'screens/pair_new_device_screen.dart';

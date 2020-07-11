@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample/constants.dart';
 
 class Devices {
   Devices({
@@ -15,13 +14,13 @@ class Devices {
 
 List connectedDevicesList = [
   Devices(
-    label: kConnectedDeviceText,
-    icon: kConnectedDeviceIcon,
+    label: 'laptop@kubuntu',
+    icon: Icons.laptop,
     isConnected: true,
   ),
   Devices(
-    label: kConnectedDevice2Text,
-    icon: kConnectedDevice2Icon,
+    label: 'desktop@kubuntu',
+    icon: Icons.desktop_windows,
     isConnected: false,
   )
 ];

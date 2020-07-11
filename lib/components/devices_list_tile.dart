@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class DevicesListTile extends StatelessWidget {
   DevicesListTile({

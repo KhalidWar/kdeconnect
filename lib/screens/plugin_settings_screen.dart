@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/components/plugin_settings_list.dart';
-import 'package:sample/constants.dart';
 
 class PluginSettingsScreen extends StatefulWidget {
   static const String id = 'plugin_settings_screen';
@@ -14,7 +13,7 @@ class _PluginSettingsScreenState extends State<PluginSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(kPluginSettingsText)),
+      appBar: AppBar(title: Text('Plugin Settings')),
       body: Padding(
         padding: EdgeInsets.only(top: 10),
         child: ListView.builder(

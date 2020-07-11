@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class RemoteInputTab extends StatefulWidget {
   static const String id = kRemoteInputIDText;
@@ -41,9 +41,8 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
   @override
   Widget build(BuildContext context) {
     var themedTextStyle = TextStyle(
-      fontSize: 15,
-      color: isLightTheme(context) ? Colors.black54 : Colors.white54,
-    );
+        fontSize: 15,
+        color: isLightTheme(context) ? Colors.black54 : Colors.white54);
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -69,25 +68,25 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      kRemoteInputCenterText,
+                      'Move finger on screen to move mouse cursor.',
                       textAlign: TextAlign.center,
                       style: themedTextStyle,
                     ),
                     SizedBox(height: 20),
                     Text(
-                      kRemoteInputCenter2Text,
+                      'Tap to click.',
                       textAlign: TextAlign.center,
                       style: themedTextStyle,
                     ),
                     SizedBox(height: 20),
                     Text(
-                      kRemoteInputCenter4Text,
+                      'Use 2 fingers to scroll.',
                       textAlign: TextAlign.center,
                       style: themedTextStyle,
                     ),
                     SizedBox(height: 20),
                     Text(
-                      kRemoteInputCenter3Text,
+                      'Use two/three fingers for right and middle buttons.',
                       textAlign: TextAlign.center,
                       style: themedTextStyle,
                     ),

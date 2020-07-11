@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample/constants.dart';
 
 class DeviceSimpleDialog extends StatefulWidget {
   @override
@@ -18,8 +17,8 @@ class _DeviceSimpleDialogState extends State<DeviceSimpleDialog> {
             Navigator.pop(context);
           },
           child: SimpleDialogItem(
-            label: kSimpleDialogConnectLabel,
-            icon: kSimpleDialogConnectIcon,
+            label: 'Connect',
+            icon: Icon(Icons.phonelink, size: 60),
           ),
         ),
         SizedBox(height: 10),
@@ -28,8 +27,7 @@ class _DeviceSimpleDialogState extends State<DeviceSimpleDialog> {
             Navigator.pop(context);
           },
           child: SimpleDialogItem(
-              icon: kSimpleDialogDisconnectIcon,
-              label: kSimpleDialogDisconnectLabel),
+              icon: Icon(Icons.phonelink_off, size: 60), label: 'Disconnect'),
         ),
         SizedBox(height: 10),
         SimpleDialogOption(
@@ -37,8 +35,8 @@ class _DeviceSimpleDialogState extends State<DeviceSimpleDialog> {
             Navigator.pop(context);
           },
           child: SimpleDialogItem(
-            icon: kSimpleDialogAboutIcon,
-            label: kSimpleDialogAboutLabel,
+            icon: Icon(Icons.info_outline, size: 60),
+            label: 'About Device',
           ),
         )
       ],
@@ -66,7 +64,7 @@ class SimpleDialogItem extends StatelessWidget {
           icon,
           Text(
             label,
-            style: kSimpleDialogItemTextStyle,
+            style: TextStyle(fontSize: 20),
           ),
         ],
       ),

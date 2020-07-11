@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class SlideshowRemoteTab extends StatefulWidget {
   static const String id = kSlideshowRemoteIDText;
@@ -20,7 +20,8 @@ class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(3.0),
-              child: Text(kSlideshowInstructionText),
+              child: Text(
+                  'You can lock your device and use the volume keys to go to the previous/next slide'),
             ),
             Expanded(
               flex: 8,

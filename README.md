@@ -9,11 +9,11 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 
 ## Features
 - Modern user interface with better user experience
-- Adaptive Light and Dark themes
+- Adaptive and persistive Light and Dark themes
 - Simplified settings page
 - View list of recently sent files
 - Consolidated all commands under single page
-- Sort "Run Command" by A-Z or Z-A or by color
+- Sort "Run Command" by A-Z, Z-A or by color
 - Red commands (restart, shutdown, suspend...etc) require confirmation before executing
 - ...and much more
 

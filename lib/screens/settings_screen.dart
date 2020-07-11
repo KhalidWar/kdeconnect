@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sample/constants.dart';
+import 'package:sample/providers/theme_manager.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
 import 'package:sample/screens/trusted_networks_screen.dart';
-import 'package:sample/services/theme_manager.dart';
 
 String deviceName = 'Note 8';
 
@@ -34,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(kSettingsText)),
+      appBar: AppBar(title: Text('Settings')),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
@@ -208,7 +207,7 @@ class ReusableInkWellSettings extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: kSettingsDeviceNameTextStyle,
+              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500),
             ),
             Text(
               subtitle,
@@ -227,23 +226,27 @@ class EncryptionInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(kEncryptionInfoText),
+      title: Text('Encryption Info'),
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(kThisDeviceFingerprintText, style: kDeviceFingerprintText),
+            Text(
+              'SHA1 Fingerprint of Your Device Certificate:',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 5),
-            Text(kThisDeviceFingerprint),
+            Text('00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'),
             SizedBox(height: 20),
-            Text(kRemoteDeviceFingerprintText, style: kDeviceFingerprintText),
+            Text('SHA1 Fingerprint of Remote Device Certificate:',
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
-            Text(kRemoteDeviceFingerprint),
+            Text('00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'),
           ],
         ),
       ),
       actions: <Widget>[
         FlatButton(
-          child: Text(kDoneText),
+          child: Text('Done'),
           onPressed: () {
             Navigator.of(context).pop();
           },

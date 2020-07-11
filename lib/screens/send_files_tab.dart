@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/components/send_files_list.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class SendFilesTab extends StatefulWidget {
   static const String id = kSendFilesIDText;
@@ -14,7 +14,7 @@ class _SendFilesTabState extends State<SendFilesTab> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          child: kFABPlusIcon,
+          child: Icon(Icons.note_add, size: 43),
           onPressed: () {
             showDialog(
                 context: context,

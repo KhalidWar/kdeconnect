@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/components/run_command_list.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 enum SortBy { AZ, ZA, Color }
 
@@ -136,7 +136,8 @@ class _RunCommandTabState extends State<RunCommandTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: showTextField ? kFABKeyboardDownIcon : kFABSearchIcon,
+        child:
+            showTextField ? kFABKeyboardDownIcon : Icon(Icons.search, size: 43),
         onPressed: () {
           setState(() {
             textFieldSwitcher();

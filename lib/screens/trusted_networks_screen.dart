@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample/constants.dart';
 
 class TrustedNetworksScreen extends StatefulWidget {
   static const String id = 'trusted_networks_screen';
@@ -17,7 +16,7 @@ class _TrustedNetworksScreenState extends State<TrustedNetworksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(kTrustedNetworksText)),
+      appBar: AppBar(title: Text('Trusted Networks')),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Row(

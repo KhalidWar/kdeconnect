@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample/components/connected_devices_list.dart';
 import 'package:sample/components/device_simple_dialog.dart';
 import 'package:sample/components/devices_list_tile.dart';
-import 'package:sample/constants.dart';
-import 'package:sample/services/theme_manager.dart';
+import 'package:sample/providers/theme_manager.dart';
 
 class PairNewDevice extends StatefulWidget {
   static const String id = 'paid_new_device_screen';
@@ -16,17 +15,19 @@ class _PairNewDeviceState extends State<PairNewDevice> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(kPairNewDeviceText),
+        title: Text('Pair New Device'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(kPairNewDeviceHeadlineText,
-                style: kPairNewDeviceHeadlineTextStyle),
+            Text(
+                'Other devices running KDE Connect in your same network should appear here.',
+                style: TextStyle(fontSize: 15)),
             SizedBox(height: 20),
-            Text(kConnectedDevicesText, style: kConnectedDevicesTextStyle),
+            Text('Connected Devices',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
             Divider(
               endIndent: 25,
               height: 2,
