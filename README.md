@@ -21,9 +21,11 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 - "Unlock Screen" command requires mobile device authentication (PIN or biometric)
 
 ## Packages used
+- [Provider](https://pub.dev/packages/provider)
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)
 - [FontAwesome](https://pub.dev/packages/font_awesome_flutter)
 - [URL Launcher](https://pub.dev/packages/url_launcher)
-- [Provider](https://pub.dev/packages/provider)
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)
 
 
 ## Installing
