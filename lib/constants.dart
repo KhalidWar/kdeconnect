@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-const kAppTitle = 'KDE Connect Sample';
-const kAppVersionText = 'Version: ';
-const kAppVersion = '1.0.0';
-
 // Send Files Tab
 const kSendFilesIDText = 'Send Files';
 

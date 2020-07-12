@@ -10,7 +10,7 @@ class _DeviceSimpleDialogState extends State<DeviceSimpleDialog> {
   Widget build(BuildContext context) {
     return SimpleDialog(
       //todo try without title
-      title: Center(child: Text('What to do?')),
+//      title: Center(child: Text('What to do?')),
       children: <Widget>[
         SimpleDialogOption(
           onPressed: () {

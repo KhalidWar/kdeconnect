@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/components/connected_devices_list.dart';
 import 'package:sample/components/device_simple_dialog.dart';
@@ -43,7 +44,7 @@ class _PairNewDeviceState extends State<PairNewDevice> {
                     icon: connectedDevicesList[index].icon,
                     isConnected: false,
                     onPressed: () {
-                      showDialog(
+                      showModal(
                         context: context,
                         builder: (BuildContext context) {
                           return DeviceSimpleDialog();

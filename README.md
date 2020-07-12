@@ -23,6 +23,7 @@ A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) w
 ## Packages used
 - [Provider](https://pub.dev/packages/provider)
 - [Shared Preferences](https://pub.dev/packages/shared_preferences)
+- [Animations](https://pub.dev/packages/animations)
 - [FontAwesome](https://pub.dev/packages/font_awesome_flutter)
 - [URL Launcher](https://pub.dev/packages/url_launcher)
 
