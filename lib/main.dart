@@ -6,7 +6,6 @@ import 'package:sample/screens/pair_new_device_screen.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
 import 'package:sample/screens/trusted_networks_screen.dart';
 
-import 'constants.dart';
 import 'screens/pair_new_device_screen.dart';
 import 'screens/settings_screen.dart';
 import 'services/themes.dart';
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeManager, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: kAppTitle,
+            title: 'KDE Connect Sample',
             theme: themeManager.isDark ? darkTheme : lightTheme,
             darkTheme: darkTheme,
             routes: {

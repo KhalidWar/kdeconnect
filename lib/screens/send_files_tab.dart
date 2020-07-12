@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/components/send_files_list.dart';
 import 'package:sample/constants.dart';
@@ -10,13 +11,18 @@ class SendFilesTab extends StatefulWidget {
 }
 
 class _SendFilesTabState extends State<SendFilesTab> {
+  String _currentTime() {
+    return '${DateTime.now().month}/${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.note_add, size: 43),
           onPressed: () {
-            showDialog(
+            showModal(
+//              configuration: ,
                 context: context,
                 builder: (context) {
                   return AlertDialog(
@@ -54,8 +60,35 @@ class _SendFilesTabState extends State<SendFilesTab> {
                   OutlineButton(
                     borderSide:
                         BorderSide(color: Theme.of(context).accentColor),
-                    child: Text('clear all'),
-                    onPressed: () {},
+                    child: Text('Clear All'),
+                    onPressed: () {
+                      showModal(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content:
+                                  Text('Are you sure you want to Clear All?'),
+                              actions: [
+                                OutlineButton(
+                                  child: Text('Yes'),
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pop(context);
+                                    });
+                                  },
+                                ),
+                                OutlineButton(
+                                  child: Text('No'),
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pop(context);
+                                    });
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                    },
                   ),
                 ],
               ),
@@ -91,14 +124,14 @@ class _SendFilesTabState extends State<SendFilesTab> {
                                   ),
                                   Row(
                                     children: <Widget>[
-                                      ReusableFileListSubtitle(
+                                      SendFilesListSubtitle(
                                           category: filesList[index].type),
-                                      DotSeparator(),
-                                      ReusableFileListSubtitle(
+                                      SubtitleSeparator(),
+                                      SendFilesListSubtitle(
                                           category: filesList[index].size),
-                                      DotSeparator(),
-                                      ReusableFileListSubtitle(
-                                          category: 'date'),
+                                      SubtitleSeparator(),
+                                      SendFilesListSubtitle(
+                                          category: _currentTime()),
                                     ],
                                   ),
                                 ],
@@ -121,8 +154,8 @@ class _SendFilesTabState extends State<SendFilesTab> {
   }
 }
 
-class DotSeparator extends StatelessWidget {
-  const DotSeparator({
+class SubtitleSeparator extends StatelessWidget {
+  const SubtitleSeparator({
     Key key,
   }) : super(key: key);
 
@@ -130,20 +163,20 @@ class DotSeparator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      // todo align separator to the middle
       child: Text(
-        '.',
+        '-',
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: isLightTheme(context) ? Colors.black54 : Colors.white54,
-          fontSize: 25,
-          fontWeight: FontWeight.w400,
         ),
       ),
     );
   }
 }
 
-class ReusableFileListSubtitle extends StatelessWidget {
-  const ReusableFileListSubtitle({
+class SendFilesListSubtitle extends StatelessWidget {
+  const SendFilesListSubtitle({
     Key key,
     @required this.category,
   }) : super(key: key);

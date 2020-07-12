@@ -1,11 +1,10 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample/components/about_app_dialog.dart';
 import 'package:sample/components/connected_devices_list.dart';
 import 'package:sample/components/device_simple_dialog.dart';
 import 'package:sample/components/devices_list_tile.dart';
 import 'package:sample/components/drawer_items_list_tile.dart';
-import 'package:sample/constants.dart';
 import 'package:sample/providers/theme_manager.dart';
 import 'package:sample/screens/pair_new_device_screen.dart';
 import 'package:sample/screens/plugin_settings_screen.dart';
@@ -51,7 +50,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   icon: connectedDevicesList[index].icon,
                   isConnected: connectedDevicesList[index].isConnected,
                   onPressed: () {
-                    showDialog(
+                    showModal(
                       context: context,
                       builder: (BuildContext context) {
                         return DeviceSimpleDialog();
@@ -91,22 +90,6 @@ class _MainDrawerState extends State<MainDrawer> {
               },
             ),
           ],
-        ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 50),
-          child: Column(
-            children: <Widget>[
-              Text(kAppTitle),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(kAppVersionText),
-                  Text(kAppVersion),
-                ],
-              ),
-              AboutAppDialog(),
-            ],
-          ),
         ),
       ],
     );
