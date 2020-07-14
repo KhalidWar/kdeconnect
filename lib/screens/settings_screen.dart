@@ -35,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
-
+    bool switchValue = false;
     return Scaffold(
       appBar: AppBar(title: Text('Settings')),
       body: Padding(
@@ -47,10 +47,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Column(
                 children: <Widget>[
                   ReusableInkWellSettings(
-                    title: 'Accent Color',
-                    subtitle: 'Select an accent color',
+                    title: 'Themes',
+                    subtitle: '',
                   ),
-                  //todo implement accent color customization
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -71,31 +70,53 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ],
                   ),
+                  SwitchListTile(
+                    title: Text('Color fill top and bottom bars'),
+                    value: switchValue,
+                    subtitle: Text(
+                        'Fill top App bar and Bottom Navigation bar with accent color'),
+                    onChanged: (toggle) {
+                      setState(() {
+                        switchValue =
+                            toggle == false ? toggle = true : toggle = false;
+                      });
+                    },
+                  ),
+                  Consumer<ThemeManager>(
+                    builder: (context, themeManager, child) => SwitchListTile(
+                      title: Text('Dark Theme'),
+                      value: themeManager.isDark,
+                      subtitle: Text('Force dark theme'),
+                      onChanged: (toggle) {
+                        themeManager.toggleTheme();
+                      },
+                    ),
+                  ),
                 ],
               ),
-              Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text('Dark Theme',
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.w500)),
-                    Consumer<ThemeManager>(
-                      builder: (context, themeManager, child) => Switch(
-                        activeColor: Theme.of(context).accentColor,
-                        value: themeManager.isDark,
-                        onChanged: (value) {
-                          setState(() {
-                            themeManager.toggleTheme();
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-//              SizedBox(height: 25),
+//              Container(
+//                height: 70,
+//                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                  children: <Widget>[
+//                    Text('Dark Theme',
+//                        style: TextStyle(
+//                            fontSize: 25.0, fontWeight: FontWeight.w500)),
+//                    Consumer<ThemeManager>(
+//                      builder: (context, themeManager, child) => Switch(
+//                        activeColor: Theme.of(context).accentColor,
+//                        value: themeManager.isDark,
+//                        onChanged: (value) {
+//                          setState(() {
+//                            themeManager.toggleTheme();
+//                          });
+//                        },
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//              ),
+              SizedBox(height: 20),
               ReusableInkWellSettings(
                 title: 'Device Name',
                 subtitle: deviceName,

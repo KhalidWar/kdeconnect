@@ -21,7 +21,6 @@ class DevicesListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
     return Container(
-      //todo accentColor instead of primaryColorLight
       color: isConnected ? Theme.of(context).accentColor : null,
       child: ListTile(
         dense: true,

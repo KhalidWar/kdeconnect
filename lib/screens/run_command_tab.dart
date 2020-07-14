@@ -9,7 +9,7 @@ import '../constants.dart';
 enum SortBy { AZ, ZA, Color }
 
 class RunCommandTab extends StatefulWidget {
-  static const String id = kRunCommandIDText;
+  static const String id = 'Run Command';
 
   @override
   _RunCommandTabState createState() => _RunCommandTabState();

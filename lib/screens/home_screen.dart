@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kdeconnect/components/main_drawer.dart';
-import 'package:kdeconnect/components/tabs_list.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
+import 'package:kdeconnect/screens/media_control_tab.dart';
+import 'package:kdeconnect/screens/remote_input_tab.dart';
+import 'package:kdeconnect/screens/run_command_tab.dart';
+import 'package:kdeconnect/screens/send_files_tab.dart';
+import 'package:kdeconnect/screens/slideshow_remote_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -72,3 +76,34 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class Tabs {
+  Tabs({this.title, this.widget});
+
+  String title;
+  Widget widget;
+  Function function;
+}
+
+List tabsList = [
+  Tabs(
+    title: 'Send Files',
+    widget: SendFilesTab(),
+  ),
+  Tabs(
+    title: 'Slideshow Remote',
+    widget: SlideshowRemoteTab(),
+  ),
+  Tabs(
+    title: 'Multimedia Control',
+    widget: MediaControlTab(),
+  ),
+  Tabs(
+    title: 'Remote Input',
+    widget: RemoteInputTab(),
+  ),
+  Tabs(
+    title: 'Run Command',
+    widget: RunCommandTab(),
+  ),
+];

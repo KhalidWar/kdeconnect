@@ -4,7 +4,7 @@ import 'package:kdeconnect/providers/theme_manager.dart';
 import '../constants.dart';
 
 class RemoteInputTab extends StatefulWidget {
-  static const String id = kRemoteInputIDText;
+  static const String id = 'Remote Input';
 
   @override
   _RemoteInputTabState createState() => _RemoteInputTabState();
@@ -35,8 +35,11 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
     }
   }
 
+  // todo keyboard physical back buttons should trigger textFieldSwitcher()
   void textFieldSwitcher() {
-    showTextField = !showTextField;
+    setState(() {
+      showTextField = !showTextField;
+    });
   }
 
   @override
@@ -49,10 +52,7 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
       floatingActionButton: FloatingActionButton(
           child: showTextField ? kFABKeyboardDownIcon : kFABKeyboardUpIcon,
           onPressed: () {
-            setState(() {
-              // todo keyboard "done" and physical back buttons should trigger textFieldSwitcher()
-              textFieldSwitcher();
-            });
+            textFieldSwitcher();
           }),
       body: Padding(
         padding: EdgeInsets.all(8),
