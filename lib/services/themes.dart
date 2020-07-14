@@ -32,20 +32,15 @@ ThemeData darkTheme = ThemeData(
   toggleButtonsTheme: toggleButtonsTheme,
 );
 
-SliderThemeData sliderThemeData =
-    SliderThemeData(thumbColor: accentColor, activeTrackColor: accentColor);
+SliderThemeData sliderThemeData = SliderThemeData(
+    thumbColor: accentColor, activeTrackColor: accentColor, trackHeight: 1.5);
 
 ButtonThemeData buttonThemeData = ButtonThemeData(
   splashColor: accentColor,
   highlightColor: accentColor,
   shape: RoundedRectangleBorder(
-    side: BorderSide(
-      style: BorderStyle.solid,
-      color: accentColor,
-    ),
-    borderRadius: BorderRadius.all(
-      Radius.circular(10),
-    ),
+    side: BorderSide(style: BorderStyle.solid, color: accentColor),
+    borderRadius: BorderRadius.all(Radius.circular(10)),
   ),
 );
 

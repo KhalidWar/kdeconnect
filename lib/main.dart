@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeManager, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'KDE Connect Sample',
+            title: 'KDE Connect',
             theme: themeManager.isDark ? darkTheme : lightTheme,
             darkTheme: darkTheme,
             routes: {

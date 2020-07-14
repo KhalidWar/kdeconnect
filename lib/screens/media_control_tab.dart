@@ -102,53 +102,13 @@ class _MediaControlTabState extends State<MediaControlTab> {
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Center(child: getDropdownButton()),
             Expanded(
-                child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: <Widget>[
-                Image.asset(
-                  songsList[songListIndex].image,
-                ),
-                Positioned(
-                  top: 95,
-                  right: 0,
-                  child: IconButton(
-                    icon: Icon(Icons.info),
-                    onPressed: () {
-                      setState(() {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Image Credit'),
-                                content: Text(songsList[songListIndex].credit),
-                                actions: <Widget>[
-                                  FlatButton(
-                                    child: Text('Visit Image Source'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      visitImageSource();
-                                    },
-                                  ),
-                                  FlatButton(
-                                    child: Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  )
-                                ],
-                              );
-                            });
-                      });
-                    },
-                  ),
-                ),
-              ],
-            )),
+              child: Image.asset(
+                songsList[songListIndex].image,
+              ),
+            ),
             Text(
               songsList[songListIndex].title,
               style: TextStyle(fontSize: 20),
@@ -175,79 +135,87 @@ class _MediaControlTabState extends State<MediaControlTab> {
                 Text(sliderMaxValue.round().toString()),
               ],
             ),
-            Divider(thickness: 1),
+            SizedBox(height: 8),
             // todo re-design multimedia controls
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.stop, size: 20),
-                  onPressed: () {
-                    setState(() {
-                      sliderValue = 0;
-                      isPlaying = false;
-                    });
-                  },
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(16)),
+                border: Border.all(
+                  color: Theme.of(context).accentColor,
                 ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.fast_rewind, size: 35),
-                        onPressed: () {
-                          setState(() {
-                            previousSong();
-                          });
-                        },
-                      ),
-                      GestureDetector(
-                        child: Icon(
-                          isPlaying ? Icons.pause : Icons.play_arrow,
-                          size: 80,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        onTap: () {
-                          playOrPause();
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.fast_forward, size: 35),
-                        onPressed: () {
-                          setState(() {
-                            nextSong();
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onLongPress: () {
-                    setState(() {
-                      soundOrMute();
-                    });
-                  },
-                  child: IconButton(
-                    icon: isSoundPlaying
-                        ? Icon(Icons.volume_up)
-                        : Icon(Icons.volume_off,
-                            color: Theme.of(context).accentColor),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.stop, size: 20),
                     onPressed: () {
-                      showModalBottomSheet(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                topLeft: Radius.circular(20))),
-                        context: context,
-                        builder: (context) {
-                          return bottomSheetStatefulBuilder();
-                        },
-                      );
+                      setState(() {
+                        sliderValue = 0;
+                        isPlaying = false;
+                      });
                     },
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        IconButton(
+                          icon: Icon(Icons.fast_rewind, size: 35),
+                          onPressed: () {
+                            setState(() {
+                              previousSong();
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Icon(
+                            isPlaying ? Icons.pause : Icons.play_arrow,
+                            size: 80,
+                            color: Theme.of(context).accentColor,
+                          ),
+                          onTap: () {
+                            playOrPause();
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.fast_forward, size: 35),
+                          onPressed: () {
+                            setState(() {
+                              nextSong();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onLongPress: () {
+                      setState(() {
+                        soundOrMute();
+                      });
+                    },
+                    child: IconButton(
+                      icon: isSoundPlaying
+                          ? Icon(Icons.volume_up)
+                          : Icon(Icons.volume_off,
+                              color: Theme.of(context).accentColor),
+                      onPressed: () {
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  topLeft: Radius.circular(20))),
+                          context: context,
+                          builder: (context) {
+                            return bottomSheetStatefulBuilder();
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),

@@ -16,21 +16,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  var githubRepoURL = 'https://github.com/KhalidWar/kdeconnect-sample';
   String textFieldInput;
-
-  Widget deviceNameChanger() {
-    return Column(
-      children: <Widget>[
-        TextField(
-          autofocus: true,
-          textAlign: TextAlign.center,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-          ),
-        ),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Settings')),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,16 +34,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Column(
                 children: <Widget>[
                   ReusableInkWellSettings(
-                    title: 'Themes',
-                    subtitle: '',
-                  ),
+                      title: 'Themes', subtitle: 'Select accent color'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Container(
-                        height: 60,
-                        width: 60,
-                        color: Colors.orange,
+                      GestureDetector(
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          color: Colors.orange,
+                        ),
                       ),
                       Container(
                         height: 60,
@@ -164,56 +151,43 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               ReusableInkWellSettings(
+                title: 'Credits',
+                subtitle: 'Giving credit where credit is due',
+                onPressed: () {
+                  // todo give credits
+                  //  AlertDialog creditsDialog(BuildContext context) {
+                  //    return AlertDialog(
+                  //      title: Text('Image Credit'),
+                  //      content: Text(songsList[songListIndex].credit),
+                  //      actions: <Widget>[
+                  //        FlatButton(
+                  //          child: Text('Visit Image Source'),
+                  //          onPressed: () {
+                  //            Navigator.pop(context);
+                  //            visitImageSource();
+                  //          },
+                  //        ),
+                  //        FlatButton(
+                  //          child: Text('Cancel'),
+                  //          onPressed: () {
+                  //            Navigator.pop(context);
+                  //          },
+                  //        )
+                  //      ],
+                  //    );
+                  //  }
+                },
+              ),
+              ReusableInkWellSettings(
                 title: 'About App',
                 subtitle: 'Tap for more information about app',
                 onPressed: () {
-                  var url = 'https://github.com/KhalidWar/kdeconnect-sample';
-
                   showModal(
                       context: context,
                       builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('KDE Connect - Sample'),
-                          content: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                    'This app is developed as a UI/UX demo by an independent developer and is not associated with KDE team.'),
-                                SizedBox(height: 10),
-                                Text(
-                                    'To see the source code for this free and open-source app, please visit our github repo.'),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            OutlineButton(
-                              child: Text(
-                                'Visit Github repo',
-                                style: TextStyle(color: themedColor),
-                              ),
-                              onPressed: () async {
-                                if (await canLaunch(url)) {
-                                  await launch(url, forceSafariVC: false);
-                                }
-                                Navigator.pop(context);
-                              },
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).accentColor),
-                            ),
-                            OutlineButton(
-                              child: Text(
-                                'Close',
-                                style: TextStyle(color: themedColor),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).accentColor),
-                            ),
-                          ],
+                        return AboutAppDialog(
+                          themedColor: themedColor,
+                          url: githubRepoURL,
                         );
                       });
                 },
@@ -227,31 +201,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   AlertDialog deviceRenameAlertDialog() {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
-
     return AlertDialog(
       title: Text('Rename device'),
-      content: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        decoration: BoxDecoration(
-//          border: Border.all(color: themedColor),
-//          borderRadius: BorderRadius.all(Radius.circular(16)),
-            ),
-        child: TextFormField(
-          initialValue: deviceName,
-          autofocus: true,
-          textAlign: TextAlign.center,
-          textCapitalization: TextCapitalization.words,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderSide: BorderSide().copyWith(
-//                color: themedColor,
-                  ),
+      content: TextFormField(
+        initialValue: deviceName,
+        autofocus: true,
+        textAlign: TextAlign.center,
+        textCapitalization: TextCapitalization.words,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: themedColor,
             ),
           ),
-          onChanged: (value) {
-            textFieldInput = value;
-          },
         ),
+        onChanged: (value) {
+          textFieldInput = value;
+        },
       ),
       actions: <Widget>[
         FlatButton(
@@ -274,6 +240,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
           onPressed: () {
             Navigator.of(context).pop();
           },
+        ),
+      ],
+    );
+  }
+}
+
+class AboutAppDialog extends StatelessWidget {
+  const AboutAppDialog({
+    Key key,
+    @required this.themedColor,
+    @required this.url,
+  }) : super(key: key);
+
+  final Color themedColor;
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('KDE Connect - Sample'),
+      content: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+                'This app is developed as a UI/UX demo by an independent developer and is not associated with KDE team.'),
+            SizedBox(height: 10),
+            Text(
+                'To see the source code for this free and open-source app, please visit our github repo.'),
+          ],
+        ),
+      ),
+      actions: [
+        OutlineButton(
+          child: Text(
+            'Visit Github repo',
+            style: TextStyle(color: themedColor),
+          ),
+          onPressed: () async {
+            if (await canLaunch(url)) {
+              await launch(url, forceSafariVC: false);
+            }
+            Navigator.pop(context);
+          },
+          borderSide: BorderSide(color: Theme.of(context).accentColor),
+        ),
+        OutlineButton(
+          child: Text(
+            'Close',
+            style: TextStyle(color: themedColor),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          borderSide: BorderSide(color: Theme.of(context).accentColor),
         ),
       ],
     );
@@ -331,15 +353,21 @@ class EncryptionInfo extends StatelessWidget {
           children: <Widget>[
             Text(
               'SHA1 Fingerprint of Your Device Certificate:',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 5),
-            Text('00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'),
+            Text(
+              '00:00:00:00:00:00:00:00:00:00:00',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 20),
-            Text('SHA1 Fingerprint of Remote Device Certificate:',
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+            Text(
+              'SHA1 Fingerprint of Remote Device Certificate:',
+            ),
             SizedBox(height: 5),
-            Text('00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'),
+            Text(
+              '00:00:00:00:00:00:00:00:00:00:00',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
