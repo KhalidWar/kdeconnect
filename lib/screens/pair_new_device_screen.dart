@@ -22,7 +22,6 @@ class _PairNewDeviceState extends State<PairNewDevice> {
         children: <Widget>[
           Text(
             'Other devices running KDE Connect in your same network should appear here.',
-//              style: TextStyle(fontSize: 15),
           ),
           SizedBox(height: 20),
           Text('Connected Devices',
@@ -55,11 +54,6 @@ class _PairNewDeviceState extends State<PairNewDevice> {
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-//          Container(
-//            child: Text(
-//              'Please make sure both devices are on the same network and neither of them is on VPN.',
-//            ),
-//          ),
         ],
       ),
     );
