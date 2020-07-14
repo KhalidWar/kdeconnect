@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kdeconnect/components/main_drawer.dart';
-import 'package:kdeconnect/providers/theme_manager.dart';
 import 'package:kdeconnect/screens/media_control_tab.dart';
+import 'package:kdeconnect/screens/pair_new_device_screen.dart';
 import 'package:kdeconnect/screens/remote_input_tab.dart';
 import 'package:kdeconnect/screens/run_command_tab.dart';
 import 'package:kdeconnect/screens/send_files_tab.dart';
+import 'package:kdeconnect/screens/settings_screen.dart';
 import 'package:kdeconnect/screens/slideshow_remote_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,23 +28,47 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: tabsList[_selectedIndex].widget,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(45),
-        child: AppBar(
-          backgroundColor: isLightTheme(context)
-              ? Theme.of(context).primaryColor
-              : Theme.of(context).primaryColorLight,
-          title: Text(tabsList[_selectedIndex].title),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        title: Text(
+          tabsList[_selectedIndex].title,
+          style: Theme.of(context).textTheme.headline6,
         ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.phonelink),
+          onPressed: () {
+            showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
+              ),
+              context: context,
+              builder: (context) {
+                return PairNewDevice();
+              },
+            );
+          },
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 5),
+            child: IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushNamed(context, SettingsScreen.id);
+              },
+            ),
+          ),
+        ],
       ),
-      drawer: Drawer(child: MainDrawer()),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: isLightTheme(context)
-            ? Theme.of(context).primaryColor
-            : Theme.of(context).primaryColorLight,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         selectedItemColor: Theme.of(context).accentColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
