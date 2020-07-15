@@ -1,9 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:kdeconnect/components/device_simple_dialog.dart';
-import 'package:kdeconnect/components/devices_list_tile.dart';
 import 'package:kdeconnect/dummy_data/connected_devices_list.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
+import 'package:kdeconnect/widgets/device_simple_dialog.dart';
+import 'package:kdeconnect/widgets/devices_list_tile.dart';
 
 class PairNewDevice extends StatefulWidget {
   static const String id = 'paid_new_device_screen';

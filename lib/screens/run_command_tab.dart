@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kdeconnect/components/run_command_list.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
+import 'package:kdeconnect/widgets/run_command_list.dart';
 
 import '../constants.dart';
 
