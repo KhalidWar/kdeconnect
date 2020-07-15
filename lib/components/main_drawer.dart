@@ -6,7 +6,7 @@ import 'package:kdeconnect/screens/pair_new_device_screen.dart';
 import 'package:kdeconnect/screens/plugin_settings_screen.dart';
 import 'package:kdeconnect/screens/settings_screen.dart';
 
-import 'connected_devices_list.dart';
+import '../dummy_data/connected_devices_list.dart';
 import 'device_simple_dialog.dart';
 import 'devices_list_tile.dart';
 import 'drawer_items_list_tile.dart';

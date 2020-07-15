@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:kdeconnect/components/send_files_list.dart';
+import 'package:kdeconnect/dummy_data/send_files_list.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 
 import '../constants.dart';

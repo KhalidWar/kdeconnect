@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kdeconnect/components/plugin_settings_list.dart';
+import 'package:kdeconnect/dummy_data/plugin_settings_list.dart';
 
 class PluginSettingsScreen extends StatefulWidget {
   static const String id = 'plugin_settings_screen';
