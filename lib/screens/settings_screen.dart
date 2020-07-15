@@ -57,18 +57,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ],
                   ),
-                  SwitchListTile(
-                    title: Text('Color fill top and bottom bars'),
-                    value: switchValue,
-                    subtitle: Text(
-                        'Fill top App bar and Bottom Navigation bar with accent color'),
-                    onChanged: (toggle) {
-                      setState(() {
-                        switchValue =
-                            toggle == false ? toggle = true : toggle = false;
-                      });
-                    },
-                  ),
                   Consumer<ThemeManager>(
                     builder: (context, themeManager, child) => SwitchListTile(
                       title: Text('Dark Theme'),
