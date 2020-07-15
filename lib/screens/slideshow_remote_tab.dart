@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 
+import '../constants.dart';
+
 class SlideshowRemoteTab extends StatefulWidget {
-  static const String id = 'Slideshow Remote';
+  static const String id = kSlideshowRemoteIDText;
 
   @override
   _SlideshowRemoteTabState createState() => _SlideshowRemoteTabState();

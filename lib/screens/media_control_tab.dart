@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kdeconnect/dummy_data/songs_list.dart';
+import 'package:kdeconnect/components/songs_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../constants.dart';
+
 class MediaControlTab extends StatefulWidget {
-  static const String id = 'Multimedia Control';
+  static const String id = kMediaControlIDText;
 
   @override
   _MediaControlTabState createState() => _MediaControlTabState();
