@@ -170,7 +170,6 @@ class _RunCommandTabState extends State<RunCommandTab> {
   Container sortBy() {
     return Container(
       // todo animate the switching
-//          transform: ,
       decoration: BoxDecoration(
         border: Border.all(
           color: Theme.of(context).accentColor,
@@ -235,9 +234,7 @@ class RedCommandsConfirmation extends StatelessWidget {
     return AlertDialog(
       content: Text(
         'Are you sure you want to ${runCommandsList[index].title}?',
-        style: TextStyle(
-          fontSize: 25,
-        ),
+        style: Theme.of(context).textTheme.headline5,
       ),
       actions: <Widget>[
         FlatButton(

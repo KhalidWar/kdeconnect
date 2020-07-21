@@ -18,12 +18,12 @@ class _SendFilesTabState extends State<SendFilesTab> {
 
   @override
   Widget build(BuildContext context) {
+    Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.note_add, size: 43),
           onPressed: () {
             showModal(
-//              configuration: ,
                 context: context,
                 builder: (context) {
                   return AlertDialog(
@@ -67,19 +67,27 @@ class _SendFilesTabState extends State<SendFilesTab> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              content:
-                                  Text('Are you sure you want to Clear All?'),
+                              content: Text(
+                                'Are you sure you want to Clear All?',
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
                               actions: [
-                                OutlineButton(
-                                  child: Text('Yes'),
+                                FlatButton(
+                                  child: Text(
+                                    'Yes',
+                                    style: TextStyle(color: themedColor),
+                                  ),
                                   onPressed: () {
                                     setState(() {
                                       Navigator.pop(context);
                                     });
                                   },
                                 ),
-                                OutlineButton(
-                                  child: Text('No'),
+                                FlatButton(
+                                  child: Text(
+                                    'No',
+                                    style: TextStyle(color: themedColor),
+                                  ),
                                   onPressed: () {
                                     setState(() {
                                       Navigator.pop(context);
