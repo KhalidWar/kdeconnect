@@ -31,66 +31,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  ReusableInkWellSettings(
-                      title: 'Themes', subtitle: 'Select accent color'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          color: Colors.orange,
-                        ),
+              Container(
+                height: 70,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Dark Theme',
+                        style: TextStyle(
+                            fontSize: 25.0, fontWeight: FontWeight.w500)),
+                    Consumer<ThemeManager>(
+                      builder: (context, themeManager, child) => Switch(
+                        activeColor: Theme.of(context).accentColor,
+                        value: themeManager.isDark,
+                        onChanged: (value) {
+                          setState(() {
+                            themeManager.toggleTheme();
+                          });
+                        },
                       ),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        color: Colors.red,
-                      ),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        color: Colors.lightBlueAccent,
-                      ),
-                    ],
-                  ),
-                  Consumer<ThemeManager>(
-                    builder: (context, themeManager, child) => SwitchListTile(
-                      title: Text('Dark Theme'),
-                      value: themeManager.isDark,
-                      subtitle: Text('Force dark theme'),
-                      onChanged: (toggle) {
-                        themeManager.toggleTheme();
-                      },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-//              Container(
-//                height: 70,
-//                child: Row(
-//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                  children: <Widget>[
-//                    Text('Dark Theme',
-//                        style: TextStyle(
-//                            fontSize: 25.0, fontWeight: FontWeight.w500)),
-//                    Consumer<ThemeManager>(
-//                      builder: (context, themeManager, child) => Switch(
-//                        activeColor: Theme.of(context).accentColor,
-//                        value: themeManager.isDark,
-//                        onChanged: (value) {
-//                          setState(() {
-//                            themeManager.toggleTheme();
-//                          });
-//                        },
-//                      ),
-//                    ),
-//                  ],
-//                ),
-//              ),
               SizedBox(height: 20),
               ReusableInkWellSettings(
                 title: 'Device Name',
