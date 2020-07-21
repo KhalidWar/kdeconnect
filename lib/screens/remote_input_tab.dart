@@ -18,6 +18,7 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
         padding: EdgeInsets.only(bottom: 8),
         child: TextField(
           autofocus: true,
+          onSubmitted: (value) => textFieldSwitcher(),
           decoration: InputDecoration(
               contentPadding: EdgeInsets.all(10),
               focusedBorder: OutlineInputBorder(
@@ -36,7 +37,9 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
   }
 
   void textFieldSwitcher() {
-    showTextField = !showTextField;
+    setState(() {
+      showTextField = !showTextField;
+    });
   }
 
   @override
@@ -49,10 +52,8 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
       floatingActionButton: FloatingActionButton(
           child: showTextField ? kFABKeyboardDownIcon : kFABKeyboardUpIcon,
           onPressed: () {
-            setState(() {
-              // todo keyboard "done" and physical back buttons should trigger textFieldSwitcher()
-              textFieldSwitcher();
-            });
+            // todo physical back buttons should trigger textFieldSwitcher()
+            textFieldSwitcher();
           }),
       body: Padding(
         padding: EdgeInsets.all(8),

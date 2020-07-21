@@ -75,7 +75,8 @@ class _SendFilesTabState extends State<SendFilesTab> {
                                 FlatButton(
                                   child: Text(
                                     'Yes',
-                                    style: TextStyle(color: themedColor),
+                                    style: TextStyle(
+                                        color: themedColor, fontSize: 20),
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -86,7 +87,8 @@ class _SendFilesTabState extends State<SendFilesTab> {
                                 FlatButton(
                                   child: Text(
                                     'No',
-                                    style: TextStyle(color: themedColor),
+                                    style: TextStyle(
+                                        color: themedColor, fontSize: 20),
                                   ),
                                   onPressed: () {
                                     setState(() {

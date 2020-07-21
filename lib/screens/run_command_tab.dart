@@ -231,6 +231,7 @@ class RedCommandsConfirmation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
     return AlertDialog(
       content: Text(
         'Are you sure you want to ${runCommandsList[index].title}?',
@@ -238,20 +239,15 @@ class RedCommandsConfirmation extends StatelessWidget {
       ),
       actions: <Widget>[
         FlatButton(
-          child: Text('Yes',
-              style: TextStyle(
-                  color: isLightTheme(context) ? Colors.black : Colors.white,
-                  fontSize: 20)),
+          child:
+              Text('Yes', style: TextStyle(color: themedColor, fontSize: 20)),
           onPressed: () {
             Navigator.pop(context);
             runCommandsList[index].function();
           },
         ),
         FlatButton(
-          child: Text('No',
-              style: TextStyle(
-                  color: isLightTheme(context) ? Colors.black : Colors.white,
-                  fontSize: 20)),
+          child: Text('No', style: TextStyle(color: themedColor, fontSize: 20)),
           onPressed: () {
             Navigator.pop(context);
           },
