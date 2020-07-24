@@ -3,9 +3,9 @@
 A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) with more modern UI. This app is built using [Flutter](https://flutter.dev) framework.
 
 ## Screenshots
-<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/media_control.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/media_control_volume.jpg" width="150">  <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run-command_search.jpg" width="150">
+<img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/send_files.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/media_control.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/media_control_volume.jpg" width="150">  <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/run_command.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/run-command_search.jpg" width="150">
 
-<img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/send_files_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/run_command_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/main_drawer_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect-sample/blob/master/assets/screenshots/plugin_settings_night.jpg" width="150">
+<img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/send_files_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/run_command_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/main_drawer_night.jpg" width="150"> <img src="https://github.com/KhalidWar/kdeconnect/blob/master/assets/readme/plugin_settings_night.jpg" width="150">
 
 ## Features
 - Modern user interface with better user experience
