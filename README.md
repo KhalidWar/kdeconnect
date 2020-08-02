@@ -1,5 +1,6 @@
 # KDE Connect - Demo
 
+## Description
 A demo of [KDE Connect Android App](https://github.com/KDE/kdeconnect-android) with more modern UI. This app is built using [Flutter](https://flutter.dev) framework.
 
 ## Screenshots
