@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 import 'package:kdeconnect/screens/plugin_settings_screen.dart';
 import 'package:kdeconnect/screens/trusted_networks_screen.dart';
+import 'package:kdeconnect/widgets/about_app_dialog.dart';
+import 'package:kdeconnect/widgets/encryption_info.dart';
+import 'package:kdeconnect/widgets/reusable_inkwell_settings.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 String deviceName = 'Note 8';
 
@@ -22,7 +24,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
-    bool switchValue = false;
     return Scaffold(
       appBar: AppBar(title: Text('Settings')),
       body: Padding(
@@ -187,145 +188,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             'Cancel',
             style: TextStyle(color: themedColor),
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class AboutAppDialog extends StatelessWidget {
-  const AboutAppDialog({
-    Key key,
-    @required this.themedColor,
-    @required this.url,
-  }) : super(key: key);
-
-  final Color themedColor;
-  final String url;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('KDE Connect - Sample'),
-      content: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-                'This app is developed as a UI/UX demo by an independent developer and is not associated with KDE team.'),
-            SizedBox(height: 10),
-            Text(
-                'To see the source code for this free and open-source app, please visit our github repo.'),
-          ],
-        ),
-      ),
-      actions: [
-        OutlineButton(
-          child: Text(
-            'Visit Github repo',
-            style: TextStyle(color: themedColor),
-          ),
-          onPressed: () async {
-            if (await canLaunch(url)) {
-              await launch(url, forceSafariVC: false);
-            }
-            Navigator.pop(context);
-          },
-          borderSide: BorderSide(color: Theme.of(context).accentColor),
-        ),
-        OutlineButton(
-          child: Text(
-            'Close',
-            style: TextStyle(color: themedColor),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          borderSide: BorderSide(color: Theme.of(context).accentColor),
-        ),
-      ],
-    );
-  }
-}
-
-class ReusableInkWellSettings extends StatelessWidget {
-  const ReusableInkWellSettings({
-    Key key,
-    this.title,
-    this.subtitle,
-    this.onPressed,
-  }) : super(key: key);
-
-  final String title;
-  final String subtitle;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    Color themedColor = isLightTheme(context) ? Colors.black54 : Colors.white54;
-
-    return Container(
-      height: 70,
-      child: InkWell(
-        onTap: onPressed,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500),
-            ),
-            Text(
-              subtitle,
-              style: TextStyle(
-                color: themedColor,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EncryptionInfo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('Encryption Info'),
-      content: SingleChildScrollView(
-        child: ListBody(
-          children: <Widget>[
-            Text(
-              'SHA1 Fingerprint of Your Device Certificate:',
-            ),
-            SizedBox(height: 5),
-            Text(
-              '00:00:00:00:00:00:00:00:00:00:00',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'SHA1 Fingerprint of Remote Device Certificate:',
-            ),
-            SizedBox(height: 5),
-            Text(
-              '00:00:00:00:00:00:00:00:00:00:00',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Done',
-              style: TextStyle(
-                  color: isLightTheme(context) ? Colors.black : Colors.white)),
           onPressed: () {
             Navigator.of(context).pop();
           },

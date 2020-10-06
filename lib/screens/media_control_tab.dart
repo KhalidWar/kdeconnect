@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/dummy_data/songs_list.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:kdeconnect/widgets/reusable_volume_control.dart';
 
 import '../constants.dart';
 
@@ -13,8 +13,7 @@ class MediaControlTab extends StatefulWidget {
 }
 
 class _MediaControlTabState extends State<MediaControlTab> {
-  String currentlyPlaying = 'Michael Bublé - Feeling Good';
-  int songListIndex = 0;
+  int _songListIndex = 0;
 
   double sliderValue = 0;
   double sliderMinValue = 0;
@@ -32,18 +31,18 @@ class _MediaControlTabState extends State<MediaControlTab> {
   double bluetoothVolumeMinValue = 0;
   double bluetoothVolumeMaxValue = 100;
 
-  bool isPlaying = false;
-  bool isSoundPlaying = true;
+  bool _isPlaying = false;
+  bool _isSoundPlaying = true;
 
-  playOrPause() {
+  void _playOrPause() {
     setState(() {
-      isPlaying = !isPlaying;
+      _isPlaying = !_isPlaying;
     });
   }
 
-  soundOrMute() {
+  void _soundOrMute() {
     setState(() {
-      isSoundPlaying = !isSoundPlaying;
+      _isSoundPlaying = !_isSoundPlaying;
     });
   }
 
@@ -55,29 +54,22 @@ class _MediaControlTabState extends State<MediaControlTab> {
   ];
 
   void nextSong() {
-    if (songListIndex < songsList.length - 1) {
-      songListIndex++;
+    if (_songListIndex < songsList.length - 1) {
+      _songListIndex++;
     } else {
-      songListIndex = 0;
+      _songListIndex = 0;
     }
   }
 
   void previousSong() {
-    if (songListIndex < songsList.length && songListIndex > 0) {
-      songListIndex--;
+    if (_songListIndex < songsList.length && _songListIndex > 0) {
+      _songListIndex--;
     } else {
-      songListIndex = 1;
+      _songListIndex = 1;
     }
   }
 
-  visitImageSource() async {
-    var url = songsList[songListIndex].url;
-    if (await canLaunch(url)) {
-      await launch(url, forceSafariVC: false);
-    }
-  }
-
-  DropdownButton getDropdownButton() {
+  DropdownButton _getDropdownButton() {
     List<DropdownMenuItem> dropdownMenuItems = [];
 
     for (String mediaPlayer in mediaPlayers) {
@@ -105,14 +97,14 @@ class _MediaControlTabState extends State<MediaControlTab> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            Center(child: getDropdownButton()),
+            Center(child: _getDropdownButton()),
             Expanded(
               child: Image.asset(
-                songsList[songListIndex].image,
+                songsList[_songListIndex].image,
               ),
             ),
             Text(
-              songsList[songListIndex].title,
+              songsList[_songListIndex].title,
               style: TextStyle(fontSize: 20),
             ),
             Row(
@@ -154,7 +146,7 @@ class _MediaControlTabState extends State<MediaControlTab> {
                     onPressed: () {
                       setState(() {
                         sliderValue = 0;
-                        isPlaying = false;
+                        _isPlaying = false;
                       });
                     },
                   ),
@@ -172,12 +164,12 @@ class _MediaControlTabState extends State<MediaControlTab> {
                         ),
                         GestureDetector(
                           child: Icon(
-                            isPlaying ? Icons.pause : Icons.play_arrow,
+                            _isPlaying ? Icons.pause : Icons.play_arrow,
                             size: 80,
                             color: Theme.of(context).accentColor,
                           ),
                           onTap: () {
-                            playOrPause();
+                            _playOrPause();
                           },
                         ),
                         IconButton(
@@ -194,11 +186,11 @@ class _MediaControlTabState extends State<MediaControlTab> {
                   GestureDetector(
                     onLongPress: () {
                       setState(() {
-                        soundOrMute();
+                        _soundOrMute();
                       });
                     },
                     child: IconButton(
-                      icon: isSoundPlaying
+                      icon: _isSoundPlaying
                           ? Icon(Icons.volume_up)
                           : Icon(Icons.volume_off,
                               color: Theme.of(context).accentColor),
@@ -244,12 +236,13 @@ class _MediaControlTabState extends State<MediaControlTab> {
                   IconButton(
                     icon: Icon(
                       Icons.volume_off,
-                      color:
-                          isSoundPlaying ? null : Theme.of(context).accentColor,
+                      color: _isSoundPlaying
+                          ? null
+                          : Theme.of(context).accentColor,
                     ),
                     onPressed: () {
                       setModalState(() {
-                        soundOrMute();
+                        _soundOrMute();
                       });
                     },
                   ),
@@ -290,43 +283,6 @@ class _MediaControlTabState extends State<MediaControlTab> {
           ),
         );
       },
-    );
-  }
-}
-
-class ReusableVolumeControl extends StatelessWidget {
-  ReusableVolumeControl({
-    @required this.value,
-    @required this.min,
-    @required this.max,
-    @required this.function,
-    @required this.trailingIcon,
-  });
-
-  final Icon trailingIcon;
-  final double value;
-  final double min;
-  final double max;
-  final Function function;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(Icons.volume_up),
-        Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Slider(
-            value: value,
-            min: min,
-            max: max,
-            activeColor: Theme.of(context).accentColor,
-            onChanged: function,
-          ),
-        ),
-        trailingIcon,
-      ],
     );
   }
 }

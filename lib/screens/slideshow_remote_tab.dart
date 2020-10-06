@@ -3,14 +3,9 @@ import 'package:kdeconnect/providers/theme_manager.dart';
 
 import '../constants.dart';
 
-class SlideshowRemoteTab extends StatefulWidget {
+class SlideshowRemoteTab extends StatelessWidget {
   static const String id = kSlideshowRemoteIDText;
 
-  @override
-  _SlideshowRemoteTabState createState() => _SlideshowRemoteTabState();
-}
-
-class _SlideshowRemoteTabState extends State<SlideshowRemoteTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

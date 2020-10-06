@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kdeconnect/models/tabs.dart';
 import 'package:kdeconnect/screens/media_control_tab.dart';
 import 'package:kdeconnect/screens/pair_new_device_screen.dart';
 import 'package:kdeconnect/screens/remote_input_tab.dart';
@@ -17,11 +18,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 2;
+  int _tabIndex = 2;
 
-  void selectedIndex(int index) {
+  List tabsList = [
+    Tabs(title: 'Send Files', widget: SendFilesTab()),
+    Tabs(title: 'Slideshow Remote', widget: SlideshowRemoteTab()),
+    Tabs(title: 'Multimedia Control', widget: MediaControlTab()),
+    Tabs(title: 'Remote Input', widget: RemoteInputTab()),
+    Tabs(title: 'Run Command', widget: RunCommandTab()),
+  ];
+
+  void _selectedIndex(int index) {
     setState(() {
-      _selectedIndex = index;
+      _tabIndex = index;
     });
   }
 
@@ -32,12 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
           duration: Duration(milliseconds: 150),
           transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
               FadeScaleTransition(animation: primaryAnimation, child: child),
-          child: tabsList[_selectedIndex].widget),
+          child: tabsList[_tabIndex].widget),
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         title: Text(
-          tabsList[_selectedIndex].title,
+          tabsList[_tabIndex].title,
           style: Theme.of(context).textTheme.headline6,
         ),
         centerTitle: true,
@@ -60,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: selectedIndex,
+        currentIndex: _tabIndex,
+        onTap: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Theme.of(context).primaryColorLight,
         selectedItemColor: Theme.of(context).accentColor,
@@ -72,57 +81,26 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.insert_drive_file),
-            title: Text(tabsList[_selectedIndex].title),
+            title: Text(tabsList[_tabIndex].title),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_remote),
-            title: Text(tabsList[_selectedIndex].title),
+            title: Text(tabsList[_tabIndex].title),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.play_circle_outline),
-            title: Text(tabsList[_selectedIndex].title),
+            title: Text(tabsList[_tabIndex].title),
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.mousePointer),
-            title: Text(tabsList[_selectedIndex].title),
+            title: Text(tabsList[_tabIndex].title),
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.terminal),
-            title: Text(tabsList[_selectedIndex].title),
+            title: Text(tabsList[_tabIndex].title),
           ),
         ],
       ),
     );
   }
 }
-
-class Tabs {
-  Tabs({this.title, this.widget});
-
-  String title;
-  Widget widget;
-  Function function;
-}
-
-List tabsList = [
-  Tabs(
-    title: 'Send Files',
-    widget: SendFilesTab(),
-  ),
-  Tabs(
-    title: 'Slideshow Remote',
-    widget: SlideshowRemoteTab(),
-  ),
-  Tabs(
-    title: 'Multimedia Control',
-    widget: MediaControlTab(),
-  ),
-  Tabs(
-    title: 'Remote Input',
-    widget: RemoteInputTab(),
-  ),
-  Tabs(
-    title: 'Run Command',
-    widget: RunCommandTab(),
-  ),
-];

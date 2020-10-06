@@ -2,6 +2,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/dummy_data/send_files_list.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
+import 'package:kdeconnect/widgets/send_files_list_subtitle.dart';
+import 'package:kdeconnect/widgets/subtitle_seperator.dart';
 
 import '../constants.dart';
 
@@ -20,30 +22,7 @@ class _SendFilesTabState extends State<SendFilesTab> {
   Widget build(BuildContext context) {
     Color themedColor = isLightTheme(context) ? Colors.black : Colors.white;
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.note_add, size: 43),
-          onPressed: () {
-            showModal(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text('Permission Notice'),
-                    content: Text(
-                        'This app is a demo and doesn\'t need to access device storage but this is how you select a file to send to connected device.'),
-                    actions: <Widget>[
-                      FlatButton(
-                        textColor:
-                            isLightTheme(context) ? Colors.black : Colors.white,
-                        child: Text('Okay'),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
-                    ],
-                  );
-                });
-          },
-        ),
+        floatingActionButton: buildFloatingActionButton(context),
         body: Padding(
           padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
           child: Column(
@@ -163,47 +142,31 @@ class _SendFilesTabState extends State<SendFilesTab> {
           ),
         ));
   }
-}
 
-class SubtitleSeparator extends StatelessWidget {
-  const SubtitleSeparator({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      // todo align separator to the middle
-      child: Text(
-        '-',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: isLightTheme(context) ? Colors.black54 : Colors.white54,
-        ),
-      ),
-    );
-  }
-}
-
-class SendFilesListSubtitle extends StatelessWidget {
-  const SendFilesListSubtitle({
-    Key key,
-    @required this.category,
-  }) : super(key: key);
-
-  final String category;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0, 6, 0, 0),
-      child: Text(
-        category,
-        style: TextStyle(
-          color: isLightTheme(context) ? Colors.black54 : Colors.white54,
-        ),
-      ),
+  FloatingActionButton buildFloatingActionButton(BuildContext context) {
+    return FloatingActionButton(
+      child: Icon(Icons.note_add, size: 43),
+      onPressed: () {
+        showModal(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Permission Notice'),
+                content: Text(
+                    'This app is a demo and doesn\'t need to access device storage but this is how you select a file to send to connected device.'),
+                actions: <Widget>[
+                  FlatButton(
+                    textColor:
+                        isLightTheme(context) ? Colors.black : Colors.white,
+                    child: Text('Okay'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
+      },
     );
   }
 }

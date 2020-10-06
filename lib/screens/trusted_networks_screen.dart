@@ -7,10 +7,10 @@ class TrustedNetworksScreen extends StatefulWidget {
 }
 
 class _TrustedNetworksScreenState extends State<TrustedNetworksScreen> {
-  bool isChecked = true;
+  bool _isChecked = true;
 
   checkboxController() {
-    isChecked = !isChecked;
+    _isChecked = !_isChecked;
   }
 
   @override
@@ -22,7 +22,7 @@ class _TrustedNetworksScreenState extends State<TrustedNetworksScreen> {
         child: Row(
           children: <Widget>[
             Checkbox(
-              value: isChecked,
+              value: _isChecked,
               onChanged: (value) {
                 setState(() {
                   checkboxController();

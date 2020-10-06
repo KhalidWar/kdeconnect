@@ -1,21 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-class Files {
-  Files({
-    @required this.icon,
-    @required this.name,
-    @required this.type,
-    @required this.date,
-    @required this.size,
-  });
-
-  final IconData icon;
-  final String name;
-  final String type;
-  final DateTime date;
-  final String size;
-}
+import 'package:kdeconnect/models/files.dart';
 
 List filesList = [
   Files(

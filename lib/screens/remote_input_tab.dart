@@ -12,6 +12,13 @@ class RemoteInputTab extends StatefulWidget {
 
 class _RemoteInputTabState extends State<RemoteInputTab> {
   bool showTextField = false;
+
+  void textFieldSwitcher() {
+    setState(() {
+      showTextField = !showTextField;
+    });
+  }
+
   Widget buildTextField() {
     if (showTextField == true) {
       return Padding(
@@ -34,12 +41,6 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
     } else {
       return Container();
     }
-  }
-
-  void textFieldSwitcher() {
-    setState(() {
-      showTextField = !showTextField;
-    });
   }
 
   @override

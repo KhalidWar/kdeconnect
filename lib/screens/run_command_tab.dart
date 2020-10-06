@@ -23,20 +23,9 @@ class _RunCommandTabState extends State<RunCommandTab> {
   SortBy _sortBy = SortBy.AZ;
 
   // todo implement search functionality
-  bool isTextFieldEmpty() {
-    if (showTextField == true) {
-//      if (textFieldInput.isEmpty) {
-//        return true;
-//      } else {
-//        return false;
-//      }
-    }
-    return false;
-  }
-
   // todo implement sort functionality
 
-  void textFieldSwitcher() {
+  void _textFieldSwitcher() {
     setState(() {
       showTextField = !showTextField;
     });
@@ -57,7 +46,7 @@ class _RunCommandTabState extends State<RunCommandTab> {
         child:
             showTextField ? kFABKeyboardDownIcon : Icon(Icons.search, size: 43),
         onPressed: () {
-          textFieldSwitcher();
+          _textFieldSwitcher();
         },
       ),
       body: Padding(
@@ -83,7 +72,7 @@ class _RunCommandTabState extends State<RunCommandTab> {
                       subtitle: Text(runCommandsList[index].subtitle),
                       onTap: () {
                         if (showTextField == true) {
-                          textFieldSwitcher();
+                          _textFieldSwitcher();
                         }
                         if (runCommandsList[index].isRedCommand == true) {
                           showModal(
@@ -122,7 +111,7 @@ class _RunCommandTabState extends State<RunCommandTab> {
               prefixIcon: Icon(Icons.search,
                   color: isLightTheme(context) ? Colors.black : Colors.white),
             ),
-            onSubmitted: (value) => textFieldSwitcher(),
+            onSubmitted: (value) => _textFieldSwitcher(),
             onChanged: (value) {
               if (value.isNotEmpty) {
                 textFieldInput = value;
@@ -140,7 +129,7 @@ class _RunCommandTabState extends State<RunCommandTab> {
                 style: BorderStyle.solid, color: Theme.of(context).accentColor),
             child: Icon(Icons.add),
             onPressed: () {
-              textFieldSwitcher();
+              _textFieldSwitcher();
               showModal(
                   context: context,
                   builder: (context) {
