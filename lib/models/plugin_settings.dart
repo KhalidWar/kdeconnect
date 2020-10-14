@@ -1,5 +1,5 @@
 class PluginSetting {
-  PluginSetting({
+  const PluginSetting({
     this.isCheckboxChecked,
     this.title,
     this.subtitle,
@@ -7,9 +7,9 @@ class PluginSetting {
     this.trailingIconFunction,
   });
 
-  bool isCheckboxChecked;
-  String title;
-  String subtitle;
-  bool showIconButton;
-  Function trailingIconFunction;
+  final bool isCheckboxChecked;
+  final String title;
+  final String subtitle;
+  final bool showIconButton;
+  final Function trailingIconFunction;
 }

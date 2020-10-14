@@ -37,9 +37,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Dark Theme',
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.w500)),
+                    Text(
+                      'Dark Theme',
+                      style: Theme.of(context).textTheme.headline5.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
+                    ),
                     Consumer<ThemeManager>(
                       builder: (context, themeManager, child) => Switch(
                         activeColor: Theme.of(context).accentColor,

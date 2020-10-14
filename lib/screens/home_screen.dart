@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _tabIndex = 2;
 
-  List tabsList = [
+  final List _tabsList = [
     Tabs(title: 'Send Files', widget: SendFilesTab()),
     Tabs(title: 'Slideshow Remote', widget: SlideshowRemoteTab()),
     Tabs(title: 'Multimedia Control', widget: MediaControlTab()),
@@ -41,12 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
           duration: Duration(milliseconds: 150),
           transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
               FadeScaleTransition(animation: primaryAnimation, child: child),
-          child: tabsList[_tabIndex].widget),
+          child: _tabsList[_tabIndex].widget),
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
         title: Text(
-          tabsList[_tabIndex].title,
+          _tabsList[_tabIndex].title,
           style: Theme.of(context).textTheme.headline6,
         ),
         centerTitle: true,
@@ -81,23 +80,23 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.insert_drive_file),
-            title: Text(tabsList[_tabIndex].title),
+            label: 'Send Files',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_remote),
-            title: Text(tabsList[_tabIndex].title),
+            label: 'Slideshow Remote',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.play_circle_outline),
-            title: Text(tabsList[_tabIndex].title),
+            label: 'Multimedia Control',
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.mousePointer),
-            title: Text(tabsList[_tabIndex].title),
+            label: 'Remote Input',
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.terminal),
-            title: Text(tabsList[_tabIndex].title),
+            label: 'Run Command',
           ),
         ],
       ),

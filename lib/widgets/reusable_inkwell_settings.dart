@@ -27,7 +27,9 @@ class ReusableInkWellSettings extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.headline5.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
             ),
             Text(
               subtitle,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Files {
-  Files({
+  const Files({
     @required this.icon,
     @required this.name,
     @required this.type,

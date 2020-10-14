@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 
-import '../constants.dart';
-
 class DevicesListTile extends StatelessWidget {
   DevicesListTile({
     Key key,
@@ -33,10 +31,11 @@ class DevicesListTile extends StatelessWidget {
         ),
         title: Text(
           label,
-          style: kDrawerItemsTextStyle.copyWith(
-            color: isConnected ? Colors.black : null,
-            fontSize: 20,
-          ),
+          style: Theme.of(context).textTheme.headline5.copyWith(
+                color: isConnected ? Colors.black : null,
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
         ),
         onTap: onPressed,
       ),

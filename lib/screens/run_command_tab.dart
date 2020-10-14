@@ -65,9 +65,11 @@ class _RunCommandTabState extends State<RunCommandTab> {
                       title: Text(
                         runCommandsList[index].title,
                         style: runCommandsList[index].isRedCommand
-                            ? kCommandsLabelTextStyle.copyWith(
-                                color: Colors.red)
-                            : kCommandsLabelTextStyle,
+                            ? Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(color: Colors.red)
+                            : Theme.of(context).textTheme.headline5,
                       ),
                       subtitle: Text(runCommandsList[index].subtitle),
                       onTap: () {
