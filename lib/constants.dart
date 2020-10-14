@@ -17,9 +17,3 @@ const kFABKeyboardDownIcon = Icon(Icons.keyboard_hide, size: 43);
 
 // Run Command Tab
 const kRunCommandIDText = 'Run Command';
-const kCommandsLabelTextStyle =
-    TextStyle(fontSize: 25, fontWeight: FontWeight.w500);
-
-// Drawer
-const kDrawerItemsTextStyle =
-    TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
