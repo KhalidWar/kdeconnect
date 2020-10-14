@@ -4,13 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 import 'package:kdeconnect/widgets/run_command_list.dart';
 
-import '../constants.dart';
-
 enum SortBy { AZ, ZA, Color }
 
 class RunCommandTab extends StatefulWidget {
-  static const String id = kRunCommandIDText;
-
   @override
   _RunCommandTabState createState() => _RunCommandTabState();
 }
@@ -43,8 +39,9 @@ class _RunCommandTabState extends State<RunCommandTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child:
-            showTextField ? kFABKeyboardDownIcon : Icon(Icons.search, size: 43),
+        child: showTextField
+            ? Icon(Icons.keyboard_hide, size: 43)
+            : Icon(Icons.search, size: 43),
         onPressed: () {
           _textFieldSwitcher();
         },

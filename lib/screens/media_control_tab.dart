@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kdeconnect/dummy_data/songs_list.dart';
 import 'package:kdeconnect/widgets/reusable_volume_control.dart';
 
-import '../constants.dart';
-
 class MediaControlTab extends StatefulWidget {
-  static const String id = kMediaControlIDText;
-
   @override
   _MediaControlTabState createState() => _MediaControlTabState();
 }

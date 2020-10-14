@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 
-import '../constants.dart';
-
 class RemoteInputTab extends StatefulWidget {
-  static const String id = kRemoteInputIDText;
-
   @override
   _RemoteInputTabState createState() => _RemoteInputTabState();
 }
@@ -51,7 +47,9 @@ class _RemoteInputTabState extends State<RemoteInputTab> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: showTextField ? kFABKeyboardDownIcon : kFABKeyboardUpIcon,
+          child: showTextField
+              ? Icon(Icons.keyboard_hide, size: 43)
+              : Icon(Icons.keyboard, size: 43),
           onPressed: () {
             // todo physical back buttons should trigger textFieldSwitcher()
             textFieldSwitcher();

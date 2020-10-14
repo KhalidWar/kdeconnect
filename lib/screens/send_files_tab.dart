@@ -5,10 +5,7 @@ import 'package:kdeconnect/providers/theme_manager.dart';
 import 'package:kdeconnect/widgets/send_files_list_subtitle.dart';
 import 'package:kdeconnect/widgets/subtitle_seperator.dart';
 
-import '../constants.dart';
-
 class SendFilesTab extends StatefulWidget {
-  static const String id = kSendFilesIDText;
   @override
   _SendFilesTabState createState() => _SendFilesTabState();
 }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kdeconnect/providers/theme_manager.dart';
 
-import '../constants.dart';
-
 class SlideshowRemoteTab extends StatelessWidget {
-  static const String id = kSlideshowRemoteIDText;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
