@@ -56,7 +56,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.3"
+    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -99,7 +99,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.8.1"
+    version: "8.10.0"
   intl:
     dependency: transitive
     description:
@@ -169,7 +169,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   process:
     dependency: transitive
     description:
@@ -344,5 +344,5 @@ packages:
     source: hosted
     version: "0.1.2"
 sdks:
-  dart: ">=2.10.0-110 <=2.11.0-181.0.dev"
+  dart: ">=2.10.0-110 <=2.11.0-186.0.dev"
   flutter: ">=1.16.0 <2.0.0"
